@@ -9,6 +9,7 @@
 #define IMMOBJECT_H_
 
 #include <list>
+#define AUTO_SIZE unsigned long size() {return sizeof(*this);}
 
 namespace citybuilder {
 
@@ -24,7 +25,7 @@ public:
 	void AddRef();
 	void Release();
 	static void CollectGarbage();
-	static void CollectRemainingObjects(bool bemitWarnings=false);
+	static void CollectRemainingObjects(bool bEmitWarnings=false);
 	virtual unsigned long size()=0;
 };
 

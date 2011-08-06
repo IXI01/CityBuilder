@@ -43,4 +43,17 @@ void IMMObject::CollectGarbage() {
 	deadObjects.clear();
 }
 
+void IMMObject::CollectRemainingObjects(bool bEmitWarnings) {
+	CollectGarbage();
+	for (std::list<IMMObject*>::iterator it = liveObjects.begin();
+		it != liveObjects.end(); it++) {
+		IMMObject *o = (*it);
+		if (bEmitWarnings) {
+			// log some kind of error message here
+		}
+		delete o;
+	}
+	liveObjects.clear();
+}
+
 } /* namespace citybuilder */
